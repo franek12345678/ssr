@@ -7,7 +7,7 @@ input.onButtonPressed(Button.B, function () {
     basic.showIcon(IconNames.No)
 })
 let ssr = 0
-ssr = 0
+ssr = 1
 basic.showIcon(IconNames.No)
 basic.forever(function () {
     pins.digitalWritePin(DigitalPin.P0, ssr)
