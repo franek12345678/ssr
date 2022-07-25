@@ -1,14 +1,22 @@
-input.onButtonPressed(Button.A, function () {
-    ssr = 0
-    basic.showIcon(IconNames.Yes)
+radio.onReceivedNumber(function (receivedNumber) {
+    basic.showString("" + (radio.receivedPacket(RadioPacketProperty.SignalStrength)))
+    basic.showString("" + (radio.receivedPacket(RadioPacketProperty.Time)))
+    basic.showString("" + (radio.receivedPacket(RadioPacketProperty.SerialNumber)))
+    basic.showString("" + (receivedNumber))
+    radio.sendNumber(receivedNumber)
 })
-input.onButtonPressed(Button.B, function () {
-    ssr = 1
-    basic.showIcon(IconNames.No)
+radio.onReceivedString(function (receivedString) {
+    basic.showString("" + (radio.receivedPacket(RadioPacketProperty.SignalStrength)))
+    basic.showString("" + (radio.receivedPacket(RadioPacketProperty.Time)))
+    basic.showString("" + (radio.receivedPacket(RadioPacketProperty.SerialNumber)))
+    basic.showString(receivedString)
+    radio.sendString(receivedString)
 })
-let ssr = 0
-ssr = 1
-basic.showIcon(IconNames.No)
-basic.forever(function () {
-    pins.digitalWritePin(DigitalPin.P0, ssr)
+radio.onReceivedValue(function (name, value) {
+    basic.showString("" + (radio.receivedPacket(RadioPacketProperty.SignalStrength)))
+    basic.showString("" + (radio.receivedPacket(RadioPacketProperty.Time)))
+    basic.showString("" + (radio.receivedPacket(RadioPacketProperty.SerialNumber)))
+    basic.showString(name)
+    basic.showString("" + (value))
+    radio.sendValue(name, value)
 })
